@@ -1,13 +1,15 @@
 package Main.Java.characters;
 //Колдун
 
-public class Sorcerer extends Person {
+import Main.Java.Coordinates;
+
+public class Wizard extends Person {
 
     protected int mana;
 
-    public Sorcerer(String name) {
+    public Wizard(String name, Coordinates coordinates) {
         super(name, "посох", 60, 15, 40, 50, 50
-                , 10);
+                , 10, coordinates);
     }
 
     @Override

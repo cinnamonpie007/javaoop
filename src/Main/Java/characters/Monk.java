@@ -1,13 +1,15 @@
 package Main.Java.characters;
 // Монах
 
+import Main.Java.Coordinates;
+
 public class Monk extends Person {
 
     protected int followers;
 
-    public Monk(String name) {
+    public Monk(String name, Coordinates coordinates) {
         super(name, "мечь", 70, 30, 25, 30, 90
-                , 70);
+                , 70, coordinates);
     }
 
     @Override

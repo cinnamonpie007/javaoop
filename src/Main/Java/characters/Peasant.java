@@ -1,15 +1,17 @@
 package Main.Java.characters;
 //Крестьянин
 
+import Main.Java.Coordinates;
+
 public class Peasant extends Person {
 
     protected int arrows;
 
     boolean inGame = true;
 
-    public Peasant(String name){
+    public Peasant(String name, Coordinates coordinates){
         super(name, "arrow", 80, 30, 30, 40, 10
-                , 100);
+                , 100, coordinates);
         int arrows = 20;
     }
 

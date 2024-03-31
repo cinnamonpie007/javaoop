@@ -1,11 +1,13 @@
 package Main.Java.characters;
 //Копейщик
 
+import Main.Java.Coordinates;
+
 public class Spearman extends Person {
 
-    public Spearman(String name) {
+    public Spearman(String name, Coordinates coordinates) {
         super(name, "копье", 70, 30, 25, 30, 90
-                , 70);
+                , 70, coordinates);
     }
 
     @Override

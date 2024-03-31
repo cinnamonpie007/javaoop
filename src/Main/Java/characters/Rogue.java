@@ -1,11 +1,13 @@
 package Main.Java.characters;
 //Разбойник
 
+import Main.Java.Coordinates;
+
 public class Rogue extends Person {
 
-    public Rogue(String name){
+    public Rogue(String name, Coordinates coordinates){
         super(name, "нож" ,100, 40, 80, 60,
-                50, 90);
+                50, 90, coordinates);
     }
 
     @Override

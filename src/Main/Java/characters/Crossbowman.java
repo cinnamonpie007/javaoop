@@ -1,13 +1,15 @@
 package Main.Java.characters;
 //Арбалетчик
 
+import Main.Java.Coordinates;
+
 public class Crossbowman extends Person {
 
     protected int arrow;
 
-    public Crossbowman(String name) {
+    public Crossbowman(String name, Coordinates coordinates) {
         super(name, "арбалет", 70, 30, 25, 30, 90
-                , 70);
+                , 70, coordinates);
     }
 
     @Override
