@@ -3,6 +3,8 @@ package Main.Java.characters;
 
 import Main.Java.Coordinates;
 
+import java.util.List;
+
 public class Peasant extends Person {
 
     protected int arrows;
@@ -11,7 +13,7 @@ public class Peasant extends Person {
 
     public Peasant(String name, Coordinates coordinates){
         super(name, "arrow", 80, 30, 30, 40, 10
-                , 100, coordinates);
+                , 100, coordinates, 0, true);
         int arrows = 20;
     }
 
@@ -35,5 +37,10 @@ public class Peasant extends Person {
     public void buy(int coast) {
         money -= coast;
     }
+
+    @Override
+    public void step(List<Person> enemies) {
+    }
+
 
 }

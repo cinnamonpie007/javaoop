@@ -5,7 +5,7 @@ import Main.Java.Coordinates;
 import java.util.List;
 
 
-public abstract class Person {
+public abstract class Person implements isInterface {
 
     protected String name;
 
@@ -25,8 +25,14 @@ public abstract class Person {
 
     protected float money;
 
+    protected int initiative;
+
+    protected boolean isAlive;
+
     public Person(String name, String weapon, int health, int armor, float money,
-                       int strength, int dexterity, int hardy, Coordinates coordinates) {
+                       int strength, int dexterity, int hardy, Coordinates coordinates, int initiative,
+                        boolean isAlive)
+    {
         this.name = name;
         this.weapon = weapon;
         this.health = health;
@@ -36,6 +42,8 @@ public abstract class Person {
         this.dexterity = dexterity;
         this.hardy = hardy;
         this.coordinates = coordinates;
+        this.initiative = initiative;
+        this.isAlive = isAlive;
     }
 
     public abstract void defend();
@@ -51,11 +59,11 @@ public abstract class Person {
         return coordinates.getCoordinats();
     }
 
-//    public int toCoordinatsX() {
-//        return coordinates.getX();
-//    }
-//
-//    public int toCoordinatsY() {
-//        return coordinates.getY();
-//    }
+    public int getInitiative() {
+        return initiative;
+    }
+
+    private boolean isAlive() {
+        return health > 0;
+    }
 }

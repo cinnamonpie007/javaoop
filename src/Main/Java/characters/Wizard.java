@@ -3,13 +3,15 @@ package Main.Java.characters;
 
 import Main.Java.Coordinates;
 
+import java.util.List;
+
 public class Wizard extends Person {
 
     protected int mana;
 
     public Wizard(String name, Coordinates coordinates) {
         super(name, "посох", 60, 15, 40, 50, 50
-                , 10, coordinates);
+                , 10, coordinates, 1, true);
     }
 
     @Override
@@ -29,4 +31,6 @@ public class Wizard extends Person {
     public void atack(Person person){
         person.health -= strength;
     }
+
+    public void step(List<Person> enemies){}
 }

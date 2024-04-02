@@ -3,11 +3,13 @@ package Main.Java.characters;
 
 import Main.Java.Coordinates;
 
+import java.util.List;
+
 public class Spearman extends Person {
 
     public Spearman(String name, Coordinates coordinates) {
         super(name, "копье", 70, 30, 25, 30, 90
-                , 70, coordinates);
+                , 70, coordinates, 2, true);
     }
 
     @Override
@@ -22,5 +24,10 @@ public class Spearman extends Person {
 
     public void atack(Person person){
         person.health -= strength;
+    }
+
+    @Override
+    public void step(List<Person> enemies) {
+
     }
 }

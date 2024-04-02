@@ -1,15 +1,17 @@
 package Main.Java;
 import Main.Java.characters.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Collections;
+
 
 public class Main {
 
     private static String getNames(){
-        String name = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
-        return name;
+        return String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
     }
 
     public static void main(String[] args) {
@@ -42,12 +44,22 @@ public class Main {
             }
         }
 
-        for (Person person : hollyTeam) {
-            System.out.println(person.toString() + " >>> " + person.getPosition());
+        List<Person> allPerson = new ArrayList<>();
+        allPerson.addAll(hollyTeam);
+        allPerson.addAll(darkTeam);
+
+        allPerson.sort((p1, p2) -> Integer.compare(p2.getInitiative(), p1.getInitiative()));
+
+        for (Person person : allPerson) {
+            person.step(allPerson);
         }
-        for (Person person : darkTeam) {
-            System.out.println(person.toString() + " >>> " + person.getPosition());
+
+        for (Person person : allPerson){
+            System.out.println(person.toString() + " >>> " + person.getPosition() + " " + person.getInitiative());
         }
     }
 }
+
+
+
 
