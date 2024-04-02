@@ -9,9 +9,9 @@ public class Wizard extends Person {
 
     protected int mana;
 
-    public Wizard(String name, Coordinates coordinates) {
+    public Wizard(String name, Coordinates coordinates, int getTeam) {
         super(name, "посох", 60, 15, 40, 50, 50
-                , 10, coordinates, 1, true);
+                , 10, coordinates, 1, true, getTeam);
     }
 
     @Override

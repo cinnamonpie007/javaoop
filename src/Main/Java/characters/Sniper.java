@@ -9,9 +9,9 @@ public class Sniper extends Person {
 
     protected int arrow;
 
-    public Sniper(String name, Coordinates coordinates) {
+    public Sniper(String name, Coordinates coordinates, int getTeam) {
         super(name, "винтовка", 70, 30, 25, 30, 90
-                , 70, coordinates, 3, true);
+                , 70, coordinates, 3, true, getTeam);
         this.arrow = 10;
     }
 

@@ -9,9 +9,9 @@ public class Monk extends Person {
 
     protected int followers;
 
-    public Monk(String name, Coordinates coordinates) {
+    public Monk(String name, Coordinates coordinates, int getTeam) {
         super(name, "мечь", 70, 30, 25, 30, 90
-                , 70, coordinates, 1, true);
+                , 70, coordinates, 1, true, getTeam);
     }
 
     @Override

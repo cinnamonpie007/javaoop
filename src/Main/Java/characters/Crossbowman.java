@@ -9,9 +9,10 @@ public class Crossbowman extends Person {
 
     protected int arrow;
 
-    public Crossbowman(String name, Coordinates coordinates) {
+    public Crossbowman(String name, Coordinates coordinates, int getTeam) {
         super(name, "арбалет", 70, 30, 25, 30, 90
-                , 70, coordinates, 3, true);
+                , 70, coordinates, 3, true, getTeam);
+        this.arrow = 10;
     }
 
     @Override

@@ -11,9 +11,9 @@ public class Peasant extends Person {
 
     boolean inGame = true;
 
-    public Peasant(String name, Coordinates coordinates){
+    public Peasant(String name, Coordinates coordinates, int getTeam){
         super(name, "arrow", 80, 30, 30, 40, 10
-                , 100, coordinates, 0, true);
+                , 100, coordinates, 0, true, getTeam);
         int arrows = 20;
     }
 

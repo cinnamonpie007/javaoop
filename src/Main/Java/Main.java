@@ -23,24 +23,24 @@ public class Main {
             Coordinates darkField = new Coordinates(i, 9);
 
             if (i < 7) {
-                hollyTeam.add(new Peasant(getNames(), hollyField));
+                hollyTeam.add(new Peasant(getNames(), hollyField, 0));
             } else if (i == 7) {
-                hollyTeam.add(new Wizard(getNames(), hollyField));
+                hollyTeam.add(new Wizard(getNames(), hollyField, 0));
             } else if (i == 8) {
-                hollyTeam.add(new Crossbowman(getNames(), hollyField));
+                hollyTeam.add(new Crossbowman(getNames(), hollyField, 0));
             } else if (i == 9) {
-                hollyTeam.add(new Spearman(getNames(), hollyField));
+                hollyTeam.add(new Spearman(getNames(), hollyField, 0));
             }
 
             // Создаем персонажей для второй команды
             if (i < 7) {
-                darkTeam.add(new Peasant(getNames(), darkField));
+                darkTeam.add(new Peasant(getNames(), darkField, 1));
             } else if (i == 7) {
-                darkTeam.add(new Sniper(getNames(), darkField));
+                darkTeam.add(new Sniper(getNames(), darkField, 1));
             } else if (i == 8) {
-                darkTeam.add(new Monk(getNames(), darkField));
+                darkTeam.add(new Monk(getNames(), darkField, 1));
             } else if (i == 9) {
-                darkTeam.add(new Rogue(getNames(), darkField));
+                darkTeam.add(new Rogue(getNames(), darkField, 1));
             }
         }
 

@@ -2,6 +2,7 @@ package Main.Java.characters;
 
 import Main.Java.Coordinates;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,9 +30,11 @@ public abstract class Person implements isInterface {
 
     protected boolean isAlive;
 
+    protected int getTeam;
+
     public Person(String name, String weapon, int health, int armor, float money,
                        int strength, int dexterity, int hardy, Coordinates coordinates, int initiative,
-                        boolean isAlive)
+                        boolean isAlive, int getTeam)
     {
         this.name = name;
         this.weapon = weapon;
@@ -44,6 +47,7 @@ public abstract class Person implements isInterface {
         this.coordinates = coordinates;
         this.initiative = initiative;
         this.isAlive = isAlive;
+        this.getTeam = getTeam;
     }
 
     public abstract void defend();
@@ -55,15 +59,25 @@ public abstract class Person implements isInterface {
         return name;
     }
 
+
     public List<Integer> getPosition(){
-        return coordinates.getCoordinats();
+        List<Integer> list = new ArrayList<>();
+        list.add(coordinates.getX());
+        list.add(coordinates.getY());
+        return list;
     }
 
     public int getInitiative() {
         return initiative;
     }
 
-    private boolean isAlive() {
-        return health > 0;
+    protected boolean isAlive() {
+        if (health > 0){
+            return true;
+        }
+        else {
+            System.out.println(name + " is a dead");
+            return false;
+        }
     }
 }
