@@ -16,26 +16,8 @@ public class Sniper extends Arrows {
     }
 
     @Override
-    public void defend() {
-        health += 20;
-    }
-
-    @Override
-    public void buy(int coast) {
-        money -= coast;
-    }
-
-    @Override
     public String getInfo() {
         return "Снайпер" + history;
-    }
-
-    public void addArrow(int count) {
-        arrow += count;
-    }
-
-    public void attack(Person person) {
-        person.health -= strength;
     }
 
     @Override

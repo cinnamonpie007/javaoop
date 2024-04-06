@@ -2,32 +2,21 @@ package Main.Java.characters;
 //Колдун
 
 import Main.Java.Coordinates;
+import Main.Java.roleCharacteristics.Magicians;
 
 import java.util.List;
 
-public class Wizard extends Person {
+public class Wizard extends Magicians {
 
-    protected int mana;
 
     public Wizard(String name, Coordinates coordinates) {
         super(name, "посох", 400, 15, 40, 50, 50
-                , 10, coordinates, 1, true);
-        this.mana = 20;
-    }
-
-    @Override
-    public void defend() {
-        health += 20;
-    }
-
-    @Override
-    public void buy(int coast) {
-        money -= coast;
+                , 10, coordinates, 1, true, 50);
     }
 
     @Override
     public void step(List<Person> enemies, List<Person> friends) {
-
+        super.step(enemies, friends);
     }
 
     @Override
@@ -37,11 +26,7 @@ public class Wizard extends Person {
 
     @Override
     public String toString() {
-        return "[Волшебник]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
-    }
-
-    public void helth(Person person){
-        person.health += 15;
+        return "[Волшебник]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition() + getInfo();
     }
 
 }

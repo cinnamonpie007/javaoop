@@ -2,6 +2,7 @@ package Main.Java.characters;
 //Крестьянин
 
 import Main.Java.Coordinates;
+import Main.Java.roleCharacteristics.Arrows;
 
 import java.util.List;
 
@@ -9,38 +10,29 @@ public class Peasant extends Person {
 
     protected int arrows;
 
-    boolean inGame = true;
-
     public Peasant(String name, Coordinates coordinates){
-        super(name, "arrow", 900, 30, 30, 40, 10
+        super(name, "Стрелы", 900, 30, 30, 40, 10
                 , 100, coordinates, 0, true);
-        int arrows = 20;
-    }
-
-    public void givArrows(int val){
-        this.arrows -= val;
-        if (!isInGame()){
-            inGame = false;
-        }
-    }
-
-    public boolean isInGame() {
-        return this.arrows == 0 ? false : true;
-    }
-
-    @Override
-    public void defend() {
-        health += 15;
-    }
-
-    @Override
-    public void buy(int coast) {
-        money -= coast;
+        this.arrows = 5000;
     }
 
     @Override
     public void step(List<Person> enemies, List<Person> friends) {
-
+        Person pt = null;
+        int min = Integer.MAX_VALUE;
+        if (health <= 0){
+            for (Person freand : friends){
+                if (freand instanceof Arrows){
+                    if (((Arrows) freand).getArrow() < min){
+                        min = ((Arrows) freand).getArrow();
+                        pt = freand;
+                    }
+                }
+            }
+        }
+        if (pt != null){
+            ((Arrows) pt).setArrow(min + 1);
+        }
     }
 
     @Override

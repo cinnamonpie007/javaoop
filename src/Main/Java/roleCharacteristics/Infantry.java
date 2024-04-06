@@ -13,12 +13,6 @@ public class Infantry extends Person {
     }
 
     @Override
-    public void defend() {}
-
-    @Override
-    public void buy(int coast) {}
-
-    @Override
     public void step(List<Person> enemies, List<Person> friends) {
         if (!isAlive()) {
             return;

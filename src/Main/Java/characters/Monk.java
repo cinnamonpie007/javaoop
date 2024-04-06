@@ -2,26 +2,15 @@ package Main.Java.characters;
 // Монах
 
 import Main.Java.Coordinates;
+import Main.Java.roleCharacteristics.Magicians;
 
 import java.util.List;
 
-public class Monk extends Person {
-
-    protected int followers;
+public class Monk extends Magicians {
 
     public Monk(String name, Coordinates coordinates) {
         super(name, "мечь", 400, 30, 25, 30, 90
-                , 70, coordinates, 1, true);
-    }
-
-    @Override
-    public void defend() {
-        health += 20;
-    }
-
-    @Override
-    public void buy(int coast) {
-        money -= coast;
+                , 70, coordinates, 1, true, 50);
     }
 
     @Override
@@ -29,15 +18,13 @@ public class Monk extends Person {
         return "Монах" + history;
     }
 
-    public void follow(int val) {followers += 1;}
-
     @Override
     public String toString() {
-        return "[Монах]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
+        return "[Монах]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition() + getInfo();
     }
 
     @Override
-    public void step(List<Person> hollyTeam, List<Person> darkTeam) {
-
+    public void step(List<Person> enemies, List<Person> friends) {
+        super.step(enemies, friends);
     }
 }

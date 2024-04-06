@@ -14,16 +14,6 @@ public class Spearman extends Infantry {
     }
 
     @Override
-    public void defend() {
-        health += 20;
-    }
-
-    @Override
-    public void buy(int coast) {
-        money -= coast;
-    }
-
-    @Override
     public String getInfo() {
         return "Копейщик" + history;
     }

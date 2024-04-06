@@ -5,7 +5,7 @@ import Main.Java.characters.Person;
 
 import java.util.List;
 
-public class Arrows extends Person {
+public abstract class Arrows extends Person {
 
     protected int arrow;
 
@@ -15,16 +15,12 @@ public class Arrows extends Person {
         this.arrow = arrow;
     }
 
-    public void addArrow(int count) {
-        arrow += count;
+    public int getArrow(){
+        return arrow;
     }
 
-    @Override
-    public void defend() {
-    }
-
-    @Override
-    public void buy(int coast) {
+    public void setArrow(int arrow){
+        this.arrow = arrow;
     }
 
     @Override
@@ -52,6 +48,7 @@ public class Arrows extends Person {
 
         if (nearestEnemy != null) {
             attack(nearestEnemy);
+            arrow--;
             history = this.name + " стреляет по ближайшей цели: " + nearestEnemy.toString() + " с координатами" + nearestEnemy.getPosition();
         } else {
             int dX = 0;

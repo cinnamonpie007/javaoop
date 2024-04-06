@@ -32,6 +32,8 @@ public abstract class Person implements isInterface {
 
     protected boolean isAlive;
 
+    protected int maxHealth;
+
     public Person(String name, String weapon, int health, int armor, float money,
                        int strength, int dexterity, int hardy, Coordinates coordinates, int initiative,
                         boolean isAlive)
@@ -48,11 +50,8 @@ public abstract class Person implements isInterface {
         this.initiative = initiative;
         this.isAlive = isAlive;
         this.history = "";
+        this.maxHealth = health;
     }
-
-    public abstract void defend();
-
-    public abstract void buy(int coast);
 
     @Override
     public String toString() {
@@ -97,5 +96,17 @@ public abstract class Person implements isInterface {
 
     public int getHealth() {
         return health;
+    }
+
+    public void setHealth(int num){
+        this.health += num;
+    }
+
+    public int getMaxHealth(){
+        return maxHealth;
+    }
+
+    public String getName(){
+        return name;
     }
 }

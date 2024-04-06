@@ -8,30 +8,13 @@ import java.util.List;
 
 public class Crossbowman extends Arrows {
 
-    protected int arrow;
-
     public Crossbowman(String name, Coordinates coordinates) {
         super(name, "арбалет", 500, 30, 25, 30, 90
                 , 70, coordinates, 3, true, 10);}
 
     @Override
-    public void defend() {
-        health += 20;
-    }
-
-    @Override
-    public void buy(int coast) {
-        money -= coast;
-    }
-
-    @Override
     public String getInfo() {
         return "Арбалетчик" + history;
-    }
-
-    @Override
-    public void addArrow(int count){
-        arrow += count;
     }
 
     @Override

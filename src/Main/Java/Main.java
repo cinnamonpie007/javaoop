@@ -22,7 +22,7 @@ public class Main {
 
         allPerson.sort((p1, p2) -> Integer.compare(p2.getInitiative(), p1.getInitiative()));
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 30; i++)
         {
             View.view();
             for (Person p : allPerson){

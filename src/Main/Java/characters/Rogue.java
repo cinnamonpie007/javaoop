@@ -12,15 +12,6 @@ public class Rogue extends Infantry {
         super(name, "нож", 700, 40, 80, 60, 50, 90,
                 coordinates, 3, true);
     }
-    @Override
-    public void defend() {
-        health += 20;
-    }
-
-    @Override
-    public void buy(int cost) {
-        money -= cost;
-    }
 
     @Override
     public String getInfo() {
