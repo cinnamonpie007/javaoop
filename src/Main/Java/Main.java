@@ -3,8 +3,8 @@ import Main.Java.characters.*;
 import Main.Java.view.View;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Main {
@@ -22,25 +22,24 @@ public class Main {
 
         allPerson.sort((p1, p2) -> Integer.compare(p2.getInitiative(), p1.getInitiative()));
 
-        for (int i = 0; i < 30; i++)
-        {
+        Scanner in = new Scanner(System.in);
+        while (true){
             View.view();
             for (Person p : allPerson){
-                if (i % 2 == 0) {
-                    if (hollyTeam.contains(p)){
-                        p.step(darkTeam, hollyTeam);
-                    }
+                if (hollyTeam.contains(p)){
+                    p.step(darkTeam, hollyTeam);
                 } else {
                     if (darkTeam.contains(p)){
                         p.step(hollyTeam, darkTeam);
                     }
                 }
             }
-            if (!isLiving(hollyTeam)){
+            in.nextLine();
+            if (isLiving(hollyTeam)){
                 System.out.println("победа света");
                 break;
             }
-            if (!isLiving(darkTeam)) {
+            if (isLiving(darkTeam)) {
                 System.out.println("победа тьмы");
                 break;
             }
@@ -48,15 +47,15 @@ public class Main {
     }
 
     private static boolean isLiving(ArrayList<Person> team){
+        int teams = 0;
         for (Person person : team){
             if (person.getHealth() <= 0) {
-                return false;
-            } else {
-                return true;
+                teams += 1;
             }
         }
-        return false;
+        return teams == 10;
     }
+
 
     private static String getNames(){
         return String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
@@ -65,7 +64,7 @@ public class Main {
     private static ArrayList<Person> hollyTeamCreator(){
         ArrayList<Person> teamHolly = new ArrayList<Person>();
 
-        for (int i = 0; i <= 10; i++){
+        for (int i = 1; i <= 10; i++){
             Coordinates hollyField = new Coordinates(i, 1);
             switch (new Random().nextInt(4)){
                 case 0:
@@ -87,7 +86,7 @@ public class Main {
     private static ArrayList<Person> darkTeamCreator(){
         ArrayList<Person> teamDark = new ArrayList<Person>();
 
-        for (int i = 0; i <= 10; i++){
+        for (int i = 1; i <= 10; i++){
             Coordinates darkField = new Coordinates(i, 10);
             switch (new Random().nextInt(4)){
                 case 0:

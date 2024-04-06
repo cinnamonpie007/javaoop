@@ -89,7 +89,6 @@ public abstract class Person implements isInterface {
             return true;
         }
         else {
-            System.out.println(name + " мертв");
             return false;
         }
     }

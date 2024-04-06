@@ -32,7 +32,7 @@ public class View {
         String out = "| ";
         for (Person human: Main.allPerson) {
             if (human.getCoords()[0] == x && human.getCoords()[1] == y){
-                if (human.getHealth() == 0) {
+                if (human.getHealth() <= 0) {
                     out = "|" + (AnsiColors.ANSI_RED + human.getInfo().charAt(0) + AnsiColors.ANSI_RESET);
                     break;
                 }

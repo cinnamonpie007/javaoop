@@ -15,11 +15,11 @@ public abstract class Arrows extends Person {
         this.arrow = arrow;
     }
 
-    public int getArrow(){
+    public int getArrow() {
         return arrow;
     }
 
-    public void setArrow(int arrow){
+    public void setArrow(int arrow) {
         this.arrow = arrow;
     }
 
@@ -38,7 +38,7 @@ public abstract class Arrows extends Person {
 
         for (Person enemy : enemies) {
             if (!enemy.equals(this) && enemy.isAlive()) {
-                double distance = this.coordinates.calculateDistance(coordinates);
+                double distance = this.coordinates.calculateDistance(enemy.getCoordinates());
                 if (distance < minDistance) {
                     minDistance = distance;
                     nearestEnemy = enemy;
@@ -53,7 +53,7 @@ public abstract class Arrows extends Person {
         } else {
             int dX = 0;
             int dY = 0;
-            coordinates.moveTowards(0, dY);
+            coordinates.moveTowards(dX, dY);
             history = this.name + " нет цели рядом.";
         }
     }
