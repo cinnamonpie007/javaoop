@@ -15,12 +15,12 @@ public class Monk extends Magicians {
 
     @Override
     public String getInfo() {
-        return "Монах" + history;
+        return "Монах " + history;
     }
 
     @Override
     public String toString() {
-        return "[Монах]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition() + getInfo();
+        return "[Монах] " + this.name + " ♥ " + this.health + " ✶ " + getPosition() + getInfo();
     }
 
     @Override

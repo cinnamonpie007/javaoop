@@ -55,7 +55,7 @@ public abstract class Person implements isInterface {
 
     @Override
     public String toString() {
-        return name;
+        return name + " ";
     }
 
     @Override

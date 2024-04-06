@@ -25,6 +25,10 @@ public abstract class Arrows extends Person {
 
     @Override
     public void step(List<Person> enemies, List<Person> friends) {
+        if (!isAlive()) {
+            history = name + " Умер ";
+            return;
+        }
         searchNearestEnemy(enemies);
     }
 
@@ -49,12 +53,9 @@ public abstract class Arrows extends Person {
         if (nearestEnemy != null) {
             attack(nearestEnemy);
             arrow--;
-            history = this.name + " стреляет по ближайшей цели: " + nearestEnemy.toString() + " с координатами" + nearestEnemy.getPosition();
+            history = name + " стреляет по ближайшей цели: " + nearestEnemy + " с координатами" + nearestEnemy.getPosition();
         } else {
-            int dX = 0;
-            int dY = 0;
-            coordinates.moveTowards(dX, dY);
-            history = this.name + " нет цели рядом.";
+            history = name + " нет цели рядом.";
         }
     }
 }

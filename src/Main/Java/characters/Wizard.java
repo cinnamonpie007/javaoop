@@ -21,12 +21,12 @@ public class Wizard extends Magicians {
 
     @Override
     public String getInfo() {
-        return "Волшебнник" + history;
+        return "Волшебнник " + history;
     }
 
     @Override
     public String toString() {
-        return "[Волшебник]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition() + getInfo();
+        return "[Волшебник] " + this.name + " ♥ " + this.health + " ✶ " + getPosition() + getInfo();
     }
 
 }

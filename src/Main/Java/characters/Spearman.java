@@ -15,12 +15,12 @@ public class Spearman extends Infantry {
 
     @Override
     public String getInfo() {
-        return "Копейщик" + history;
+        return "Копейщик " + history;
     }
 
     @Override
     public String toString() {
-        return "[Копейщик]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
+        return "[Копейщик] " + this.name + " ♥ " + this.health + " ✶ " + getPosition() + getInfo();
     }
 
     @Override

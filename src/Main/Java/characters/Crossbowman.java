@@ -14,7 +14,7 @@ public class Crossbowman extends Arrows {
 
     @Override
     public String getInfo() {
-        return "Арбалетчик" + history;
+        return "Арбалетчик " + history;
     }
 
     @Override
@@ -23,6 +23,6 @@ public class Crossbowman extends Arrows {
 
     @Override
     public String toString() {
-        return "[Арбалетчик]," + this.name + " Здоровье:" + this.health + " Координаты: " + getPosition();
+        return "[Арбалетчик] " + this.name + " ♥ " + this.health + " ✶ " + getPosition() + getInfo();
     }
 }

@@ -37,11 +37,11 @@ public class Peasant extends Person {
 
     @Override
     public String getInfo() {
-        return "Крестьянин" + history;
+        return "Крестьянин " + history;
     }
 
     @Override
     public String toString() {
-        return "[Крестьянин]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
+        return "[Крестьянин] " + this.name + " ♥ " + this.health + " ✶ " + getPosition() + getInfo();
     }
 }

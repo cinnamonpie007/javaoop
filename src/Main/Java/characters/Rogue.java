@@ -15,12 +15,12 @@ public class Rogue extends Infantry {
 
     @Override
     public String getInfo() {
-        return "Вор" + history;
+        return "Вор " + history;
     }
 
     @Override
     public String toString() {
-        return "[Вор]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
+        return "[Вор] " + this.name + " ♥ " + this.health + " ✶ " + getPosition() + getInfo();
     }
 
     @Override

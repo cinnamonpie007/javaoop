@@ -15,6 +15,7 @@ public class Infantry extends Person {
     @Override
     public void step(List<Person> enemies, List<Person> friends) {
         if (!isAlive()) {
+            history = name + " Умер ";
             return;
         }
         Person closestEnemy = findClosestEnemy(enemies);
@@ -24,14 +25,14 @@ public class Infantry extends Person {
             int dY = enemyCoordinates.getY() - coordinates.getY();
             if (Math.abs(dX) <= 1 && Math.abs(dY) <= 1) {
                 closestEnemy.getDamage(this.strength);
-                history = this.name + " Атакует цель рядом" + closestEnemy + " с координатами: " + closestEnemy.getPosition();
+                history = name + " Атакует цель рядом" + closestEnemy + " с координатами: " + closestEnemy.getPosition();
             } else {
                 if (Math.abs(dX) > 1 && Math.abs(dY) > 1) {
                     coordinates.moveTowards(dX, 0);
                 } else {
                     coordinates.moveTowards(0, dY);
                 }
-                history = this.name + " Ходит на позицию" + Arrays.toString(getCoords()); ;
+                history = name + " Ходит на позицию: " + Arrays.toString(getCoords()); ;
             }
         }
     }

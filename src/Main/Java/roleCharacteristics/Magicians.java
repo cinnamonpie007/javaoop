@@ -9,13 +9,11 @@ import java.util.List;
 public abstract class Magicians extends Person {
 
     protected int mana;
-    protected int revivedWarriors;
 
     public Magicians(String name, String weapon, int health, int armor, float money, int strength, int dexterity,
                      int hardy, Coordinates coordinates, int initiative, boolean isAlive, int mana) {
         super(name, weapon, health, armor, money, strength, dexterity, hardy, coordinates, initiative, isAlive);
         this.mana = mana;
-        this.revivedWarriors = 0;
     }
 
     public int getMana(){
@@ -29,37 +27,43 @@ public abstract class Magicians extends Person {
     @Override
     public void step(List<Person> enemies, List<Person> friends) {
         if (health <= 0) {
+            history = name + " Умер";
             return;
         }
 
-        if (getMana() >= 10) {
-            boolean healed = false;
+        int personDie = 0;
+
+        for (Person friend : friends){
+            if (friend.getHealth() <= 0){
+                personDie += 1;
+            }
+        }
+
+        if (getMana() >= 10 && personDie < 3) {
             for (Person friend : friends) {
-                if (friend.getHealth() <= friend.getMaxHealth()) {
-                    int healAmount = Math.min(50, friend.getMaxHealth() - friend.getHealth());
-                    friend.setHealth(friend.getHealth() + healAmount);
-                    setMana(-10);
-                    healed = true;
-                    history = "Добавил союзнику " + friend.getName() + " 50 к здоровью";
-                    break;
-                } else {
+                if (friend.getHealth() > 0 && friend.getHealth() <= friend.getMaxHealth()) {
+                    int healAmount = Math.min(10, friend.getMaxHealth() - friend.getHealth());
+                    friend.setHealth(healAmount);
+                    setMana(getMana() - 10);
+                    history = "Добавил союзнику " + friend.getName() + " 10 к здоровью";
                     break;
                 }
             }
+        }
 
-            if (!healed && revivedWarriors >= 3 && mana == 50) {
-                for (Person friend : friends) {
-                    if (friend.getHealth() <= 0) {
-                        friend.setHealth(friend.getMaxHealth());
-                        setMana(-50);
-                        revivedWarriors -= 1;
-                        history = "Воскресил союзника" + friend.getName();
-                        break;
-                    }
+        else if (personDie >= 3 && mana >= 50) {
+            for (Person friend : friends) {
+                if (friend.getHealth() <= 0) {
+                    friend.setHealth(friend.getMaxHealth());
+                    setMana(getMana() - 50);
+                    history = "Воскресил союзника " + friend.getName();
+                    break;
                 }
             }
         } else {
+            history = name + " Востанавливает ману ";
             mana += 5;
         }
+
     }
 }

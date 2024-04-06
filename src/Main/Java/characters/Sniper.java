@@ -17,7 +17,7 @@ public class Sniper extends Arrows {
 
     @Override
     public String getInfo() {
-        return "Снайпер" + history;
+        return "Снайпер " + history;
     }
 
     @Override
@@ -26,6 +26,6 @@ public class Sniper extends Arrows {
 
     @Override
     public String toString() {
-        return "[Снайпер]," + this.name + " Здоровье:" + this.health  + " Координаты: " + getPosition();
+        return "[Снайпер] " + this.name + " ♥ " + this.health  + " ✶ " + getPosition() + getInfo();
     }
 }
