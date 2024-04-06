@@ -1,65 +1,109 @@
 package Main.Java;
 import Main.Java.characters.*;
+import Main.Java.view.View;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Collections;
 
 
 public class Main {
 
-    private static String getNames(){
-        return String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
-    }
+    public static ArrayList<Person> allPerson = new ArrayList<>();
+    public static ArrayList<Person> hollyTeam = new ArrayList<>();
+    public static ArrayList<Person> darkTeam = new ArrayList<>();
 
     public static void main(String[] args) {
-        List<Person> hollyTeam = new ArrayList<>();
-        List<Person> darkTeam = new ArrayList<>();
+        hollyTeam = hollyTeamCreator();
+        darkTeam = darkTeamCreator();
 
-        for (int i = 0; i < 10 + 1; i++) {
-            Coordinates hollyField = new Coordinates(i, 0);
-            Coordinates darkField = new Coordinates(i, 9);
-
-            if (i < 7) {
-                hollyTeam.add(new Peasant(getNames(), hollyField, 0));
-            } else if (i == 7) {
-                hollyTeam.add(new Wizard(getNames(), hollyField, 0));
-            } else if (i == 8) {
-                hollyTeam.add(new Crossbowman(getNames(), hollyField, 0));
-            } else if (i == 9) {
-                hollyTeam.add(new Spearman(getNames(), hollyField, 0));
-            }
-
-            // Создаем персонажей для второй команды
-            if (i < 7) {
-                darkTeam.add(new Peasant(getNames(), darkField, 1));
-            } else if (i == 7) {
-                darkTeam.add(new Sniper(getNames(), darkField, 1));
-            } else if (i == 8) {
-                darkTeam.add(new Monk(getNames(), darkField, 1));
-            } else if (i == 9) {
-                darkTeam.add(new Rogue(getNames(), darkField, 1));
-            }
-        }
-
-        List<Person> allPerson = new ArrayList<>();
         allPerson.addAll(hollyTeam);
         allPerson.addAll(darkTeam);
 
         allPerson.sort((p1, p2) -> Integer.compare(p2.getInitiative(), p1.getInitiative()));
 
-        for (Person person : allPerson) {
-            person.step(allPerson);
-        }
-
-        for (Person person : allPerson){
-            System.out.println(person.toString() + " >>> " + person.getPosition() + " " + person.getInitiative());
+        for (int i = 0; i < 20; i++)
+        {
+            View.view();
+            for (Person p : allPerson){
+                if (i % 2 == 0) {
+                    if (hollyTeam.contains(p)){
+                        p.step(darkTeam, hollyTeam);
+                    }
+                } else {
+                    if (darkTeam.contains(p)){
+                        p.step(hollyTeam, darkTeam);
+                    }
+                }
+            }
+            if (!isLiving(hollyTeam)){
+                System.out.println("победа света");
+                break;
+            }
+            if (!isLiving(darkTeam)) {
+                System.out.println("победа тьмы");
+                break;
+            }
         }
     }
+
+    private static boolean isLiving(ArrayList<Person> team){
+        for (Person person : team){
+            if (person.getHealth() <= 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static String getNames(){
+        return String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
+    }
+
+    private static ArrayList<Person> hollyTeamCreator(){
+        ArrayList<Person> teamHolly = new ArrayList<Person>();
+
+        for (int i = 0; i <= 10; i++){
+            Coordinates hollyField = new Coordinates(i, 1);
+            switch (new Random().nextInt(4)){
+                case 0:
+                    teamHolly.add(new Crossbowman(getNames(), hollyField));
+                    break;
+                case 1:
+                    teamHolly.add(new Monk(getNames(), hollyField));
+                    break;
+                case 2:
+                    teamHolly.add(new Spearman(getNames(), hollyField ));
+                    break;
+                case 3:
+                    teamHolly.add(new Peasant(getNames(), hollyField));
+                    break;
+            }
+        }
+        return teamHolly;
+    }
+    private static ArrayList<Person> darkTeamCreator(){
+        ArrayList<Person> teamDark = new ArrayList<Person>();
+
+        for (int i = 0; i <= 10; i++){
+            Coordinates darkField = new Coordinates(i, 10);
+            switch (new Random().nextInt(4)){
+                case 0:
+                    teamDark.add(new Peasant(getNames(), darkField));
+                    break;
+                case 1:
+                    teamDark.add(new Sniper(getNames(), darkField));
+                    break;
+                case 2:
+                    teamDark.add(new Wizard(getNames(), darkField));
+                    break;
+                case 3:
+                    teamDark.add(new Rogue(getNames(),darkField));
+                    break;
+            }
+        }
+        return teamDark;
+    }
 }
-
-
-
-

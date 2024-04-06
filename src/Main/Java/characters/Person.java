@@ -12,7 +12,9 @@ public abstract class Person implements isInterface {
 
     protected String weapon;
 
-    Coordinates coordinates;
+    protected String history;
+
+    protected Coordinates coordinates;
 
     protected int health;
 
@@ -30,11 +32,9 @@ public abstract class Person implements isInterface {
 
     protected boolean isAlive;
 
-    protected int getTeam;
-
     public Person(String name, String weapon, int health, int armor, float money,
                        int strength, int dexterity, int hardy, Coordinates coordinates, int initiative,
-                        boolean isAlive, int getTeam)
+                        boolean isAlive)
     {
         this.name = name;
         this.weapon = weapon;
@@ -47,7 +47,7 @@ public abstract class Person implements isInterface {
         this.coordinates = coordinates;
         this.initiative = initiative;
         this.isAlive = isAlive;
-        this.getTeam = getTeam;
+        this.history = "";
     }
 
     public abstract void defend();
@@ -59,6 +59,8 @@ public abstract class Person implements isInterface {
         return name;
     }
 
+    @Override
+    public String getInfo(){return history;};
 
     public List<Integer> getPosition(){
         List<Integer> list = new ArrayList<>();
@@ -67,17 +69,33 @@ public abstract class Person implements isInterface {
         return list;
     }
 
+    public Coordinates getCoordinates(){
+        return coordinates;
+    }
+
+    public void getDamage(int damage){
+        health -= damage;
+    }
+
+    public int[] getCoords(){
+        return new int[]{coordinates.getX(), coordinates.getY()};
+    }
+
     public int getInitiative() {
         return initiative;
     }
 
-    protected boolean isAlive() {
+    public boolean isAlive() {
         if (health > 0){
             return true;
         }
         else {
-            System.out.println(name + " is a dead");
+            System.out.println(name + " мертв");
             return false;
         }
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

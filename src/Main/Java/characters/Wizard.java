@@ -9,9 +9,10 @@ public class Wizard extends Person {
 
     protected int mana;
 
-    public Wizard(String name, Coordinates coordinates, int getTeam) {
-        super(name, "посох", 60, 15, 40, 50, 50
-                , 10, coordinates, 1, true, getTeam);
+    public Wizard(String name, Coordinates coordinates) {
+        super(name, "посох", 400, 15, 40, 50, 50
+                , 10, coordinates, 1, true);
+        this.mana = 20;
     }
 
     @Override
@@ -24,13 +25,23 @@ public class Wizard extends Person {
         money -= coast;
     }
 
+    @Override
+    public void step(List<Person> enemies, List<Person> friends) {
+
+    }
+
+    @Override
+    public String getInfo() {
+        return "Волшебнник" + history;
+    }
+
+    @Override
+    public String toString() {
+        return "[Волшебник]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
+    }
+
     public void helth(Person person){
         person.health += 15;
     }
 
-    public void atack(Person person){
-        person.health -= strength;
-    }
-
-    public void step(List<Person> enemies){}
 }

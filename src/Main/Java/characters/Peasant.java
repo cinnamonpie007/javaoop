@@ -11,9 +11,9 @@ public class Peasant extends Person {
 
     boolean inGame = true;
 
-    public Peasant(String name, Coordinates coordinates, int getTeam){
-        super(name, "arrow", 80, 30, 30, 40, 10
-                , 100, coordinates, 0, true, getTeam);
+    public Peasant(String name, Coordinates coordinates){
+        super(name, "arrow", 900, 30, 30, 40, 10
+                , 100, coordinates, 0, true);
         int arrows = 20;
     }
 
@@ -39,8 +39,17 @@ public class Peasant extends Person {
     }
 
     @Override
-    public void step(List<Person> enemies) {
+    public void step(List<Person> enemies, List<Person> friends) {
+
     }
 
+    @Override
+    public String getInfo() {
+        return "Крестьянин" + history;
+    }
 
+    @Override
+    public String toString() {
+        return "[Крестьянин]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
+    }
 }

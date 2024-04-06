@@ -1,76 +1,38 @@
 package Main.Java.characters;
-//Разбойник
+//Вор
 
 import Main.Java.Coordinates;
+import Main.Java.roleCharacteristics.Infantry;
 
 import java.util.List;
 
-public class Rogue extends Person {
+public class Rogue extends Infantry {
 
-    public Rogue(String name, Coordinates coordinates, int getTeam){
-        super(name, "нож" ,100, 40, 80, 60,
-                50, 90, coordinates, 3, true, getTeam);
+    public Rogue(String name, Coordinates coordinates) {
+        super(name, "нож", 700, 40, 80, 60, 50, 90,
+                coordinates, 3, true);
     }
-
     @Override
     public void defend() {
         health += 20;
     }
 
     @Override
-    public void buy(int coast) {
-        money -= coast;
-    }
-
-    public void atack(Person person){
-        person.health -= strength;
+    public void buy(int cost) {
+        money -= cost;
     }
 
     @Override
-    public void step(List<Person> enemies) {
-        if (!isAlive()) {
-            return;
-        }
-
-        Person closestEnemy = findClosestEnemy(enemies);
-        if (closestEnemy != null) {
-            int dX = closestEnemy.coordinates.getX() - coordinates.getX();
-            int dY = closestEnemy.coordinates.getY() - coordinates.getY();
-
-            if (Math.abs(dX) <= 1 && Math.abs(dY) <= 1) {
-                atack(closestEnemy);
-            } else {
-                if (Math.abs(dX) > Math.abs(dY)) {
-                    moveTowards(dX, 0);
-                } else {
-                    moveTowards(0, dY);
-                }
-            }
-        }
+    public String getInfo() {
+        return "Вор" + history;
     }
 
-    private void moveTowards(int dX, int dY) {
-        int newX = coordinates.getX() + Integer.signum(dX);
-        int newY = coordinates.getY() + Integer.signum(dY);
-        coordinates.setX(newX);
-        coordinates.setY(newY);
+    @Override
+    public String toString() {
+        return "[Вор]" + this.name + " Здоровье: " + this.health + " Координаты: " + getPosition();
     }
 
-    private Person findClosestEnemy(List<Person> enemies) {
-        Person closestEnemy = null;
-        int minDistance = Integer.MAX_VALUE;
-
-        for (Person enemy : enemies) {
-            if (enemy.getTeam != getTeam && enemy.isAlive) {
-                int distance = Math.abs(enemy.coordinates.getX() - coordinates.getX())
-                        + Math.abs(enemy.coordinates.getY() - coordinates.getY());
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestEnemy = enemy;
-                }
-            }
-        }
-
-        return closestEnemy;
-    }
-}
+    @Override
+    public void step(List<Person> enemies, List<Person> friends) {
+        super.step(enemies, friends);
+    }}
